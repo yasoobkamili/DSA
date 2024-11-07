@@ -20,11 +20,11 @@ int main(){
     }
     //printing linked list nodes one by one
     struct Node* current = A;
-	while(current != NULL){
-		printf("Data is %d\nNext is %p\n",current->data,current->next);
-		current = current->next;
+    while(current != NULL){
+        printf("Data is %d\nNext is %p\n",current->data,current->next);
+	current = current->next;
     }
-		return 0;
+	return 0;
 }
 
 void insert_node(int value){
@@ -36,13 +36,10 @@ void insert_node(int value){
         A = temp;
     }
     else{
-        struct Node* current = A;
-        while(current->next != NULL){
-            current = current->next;
-        }
-        current->next = temp;        
+    struct Node* current = A;
+    while(current->next != NULL){
+        current = current->next;
     }
-    
-    return 0;
-     
+    current->next = temp;        
+    }
 }
