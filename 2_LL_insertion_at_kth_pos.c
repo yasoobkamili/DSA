@@ -63,10 +63,10 @@ void display(){
     printf("List is: [ ");
     struct Node* current = head;
 	while(current != NULL){
-		printf("%d",current->data);
-        if(current->next!=NULL)
-            printf(", ");
-		current = current->next;
+	    printf("%d",current->data);
+            if(current->next!=NULL)
+	    printf(", ");
+	    current = current->next;
         
     }
     printf(" ]\n");
