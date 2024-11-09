@@ -25,7 +25,7 @@ int main(){
     display();
     // call for insertion at position x
     int val,x;
-    printf("enter the value and position respectively:\n");
+    printf("enter the value and position respectively for insertion:\n");
     scanf("%d%d",&val,&x);
     insert(val,x);
     display();
@@ -34,39 +34,41 @@ int main(){
 }
 
 void insert(int value, int k){
-    int i = 2;
-    struct Node* temp_1 = head;         // storing head to be safge
+    
     struct Node* temp = (struct Node*)malloc(sizeof(struct Node));   // declaring the node i want to insert
     temp->data = value;
-    if (k == 1) {       // insert at the head
+    if (k == 1){       // insert at the head
         temp->next = head;
         head = temp;
         return;
     }
-    struct Node* previous = temp_1;         // here previous is in 1st node 
-    struct Node* current = temp_1->next;    // here present is in 2nd node
-    while(i<k && current!=NULL){ 
-        // in this loop we will shift prev and curr forward until current is pointing to kth element 
-        previous = current; 
-        current = current->next;
-        i++;
-    }
-    if(i==k){
-        previous->next = temp;  //updating link of previous to point to temp
-        temp->next = current;   //updating link of temp to point to current
-    }
+
     else{
-        printf("Invalid Position");
+
+        struct Node* temp_1 = head;         // storing head for travering
+        int i;
+        for(i=2; i<k; i++){
+            temp_1 = temp_1->next;   // travering to the kth position
+            if(temp_1 == NULL){
+                printf("Invalid position.\n");
+                return;
+            }
+        }
+        temp->next = temp_1->next;
+        temp_1->next = temp;
     }
 }
 
 void display(){
-    printf("List is: ");
+    printf("List is: [ ");
     struct Node* current = head;
 	while(current != NULL){
-		printf("%d ",current->data);
+		printf("%d",current->data);
+        if(current->next!=NULL)
+            printf(", ");
 		current = current->next;
+        
     }
-    printf("\n");
+    printf(" ]\n");
 }
 
