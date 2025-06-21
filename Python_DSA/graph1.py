@@ -15,4 +15,5 @@ class Graph:
         return self.__repr__()
 graph1 = Graph(num_nodes,edges)
 print(graph1.data)
+
 print(graph1)
